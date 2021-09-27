@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-exercice1-enfant',
@@ -6,10 +7,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./exercice1-enfant.component.css']
 })
 export class Exercice1EnfantComponent implements OnInit {
+  
+  public result:number = 0; 
 
-  constructor() { }
+  @Input() compteur2: number;
+  @Output() changeCompteur: EventEmitter<number> = new EventEmitter<number>();
+
+
+  
+  
+  constructor() {
+ 
+   }
 
   ngOnInit() {
+  
   }
+  
+  public incrementeCompteur(){
+     this.changeCompteur.emit(1);
+  }
+  public decrementeCompteur(){
+    this.changeCompteur.emit(-1);
 
+  }
 }
